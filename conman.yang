@@ -1,0 +1,18 @@
+
+module conman {
+   yang-version 1.1;
+   namespace "https://example.com/ns/example-conman";
+   prefix con;
+
+   container feature1 {
+      presence "Enables Feature 1";
+   }
+
+   container main-container {
+
+      leaf option-leaf {
+         type string;
+      }
+      must '((option-leaf != "" and ../feature1) or not(../feature1))';
+   }
+}
